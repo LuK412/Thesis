@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+	Sie sind nun ein Finanzberater.
+{% endblock %}
+
+{% block content %}
+
+	<p>
+	Jeder Ihrer Kunden besitzt {{ Constants.endowment_principals }}. 
+	</p>
+
+	{% if player.compensation == "fixed" %}
+	<p>
+	Als Finanzberater erhalten Sie eine feste Auszahlung von {{ Constants.fixed_payment }}. Das bedeutet, die Entscheidungen, die Sie für Ihre Kunden treffen, haben keinen Einfluss auf Ihre eigene Auszahlung.
+	</p>
+
+	{% elif player.compensation == "variable" %}
+	<p>
+	Als Finanzberater erhalten Sie eine feste Auszahlung von {{ Constants.variable_payment }} und zusätzlich {{ Constants.share }} % vom Gesamtergebnis Ihrer Kunden. Das bedeutet, die Entscheidungen, die Sie für Ihre Kunden treffen, haben auch einen Einfluss auf Ihre eigene Auszahlung.
+	</p>
+	{% endif %}
+
+
+	<p>
+	Ihre Kunden hatten zuvor die Möglichkeit einen der fünf Begriffe auszuwählen, die ihren Investitionswunsch signalisieren.
+	</p>
+
+
+
+
+{% include 'investment/Table.html' %}
+
+	{% next_button %}
+
+{% endblock %}
